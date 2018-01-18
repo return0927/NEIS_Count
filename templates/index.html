@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>나이스 글자수 세기</title>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script>
+		function getLength(elem){
+			$.post("http://localhost:88/count", {"str":elem.value}, function(data){
+				var result = document.getElementById("count");
+				result.value = data
+			});
+		}
+	</script>
+	<style>
+		body {
+			height: 90%;
+			width: 90%;
+		}
+		textarea {
+			height: 80%;
+			width: 80%;
+		}
+	</style>
+</head>
+<body>
+<textarea onkeyup="getLength(this);" placeholder="여기에 내용을 입력하세요."></textarea>
+<br />
+글자수: <input id="count" disabled>
+</body>
+</html>
